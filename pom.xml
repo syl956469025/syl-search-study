@@ -8,6 +8,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>syl-lucene6.6.0-study</module>
+      <module>syl-lucene5.5.0-study</module>
     </modules>
 
 
@@ -26,11 +27,18 @@
   </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-core</artifactId>
-            <version>${lucene.version}</version>
-        </dependency>
+      <dependency>
+        <groupId>syl.study</groupId>
+        <artifactId>syl-common-util</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.16.18</version>
+        <scope>provided</scope>
+      </dependency>
     </dependencies>
 
 

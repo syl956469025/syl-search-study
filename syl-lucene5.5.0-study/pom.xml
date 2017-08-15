@@ -7,23 +7,22 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>syl-lucene6.6.0-study</artifactId>
+    <artifactId>syl-lucene5.5.0-study</artifactId>
     <packaging>jar</packaging>
 
-    <name>syl-lucene6.6.0-study</name>
+    <name>syl-lucene5.5.0-study</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lucene.version>6.6.0</lucene.version>
+        <lucene.version>5.5.0</lucene.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
+            <groupId>syl.study</groupId>
+            <artifactId>syl-common-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -45,6 +44,10 @@
             <artifactId>lucene-highlighter</artifactId>
             <version>${lucene.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-suggest</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
     </dependencies>
 </project>

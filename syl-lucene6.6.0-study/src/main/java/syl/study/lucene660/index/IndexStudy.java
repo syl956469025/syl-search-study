@@ -7,11 +7,9 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
-import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.store.SimpleFSDirectory;
+import org.apache.lucene.store.Directory;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 
 /**
  * 学习创建索引
@@ -22,14 +20,14 @@ import java.nio.file.Paths;
 public class IndexStudy {
 
 
-    private static final String INDEX_PATH = "D:/var/log/index";
+
 
 
     public static void main(String[] args) throws IOException {
         //创建索引
 //        writeIndex();
         //查询索引
-        IndexReader reader = DirectoryReader.open(getFsDirectory());
+        IndexReader reader = DirectoryReader.open(LuceneUtil.getFsDirectory(null));
         IndexSearcher searcher = new IndexSearcher(reader);
         TermQuery query = new TermQuery(new Term("userName","zhangsan"));
         TopDocs search = searcher.search(query, 10);
@@ -44,11 +42,11 @@ public class IndexStudy {
 
 
     private static void writeIndex()throws IOException{
-        FSDirectory dir = getFsDirectory();
+        Directory dir = LuceneUtil.getFsDirectory(null);
         index(dir);
     }
 
-    private static void index(FSDirectory dir) throws IOException {
+    private static void index(Directory dir) throws IOException {
         Document doc = new Document();
         doc.add(new StringField("userName","zhangsan", Field.Store.YES));
         doc.add(new LongPoint("id",1));
@@ -60,9 +58,7 @@ public class IndexStudy {
         writer.commit();
     }
 
-    private static FSDirectory getFsDirectory() throws IOException {
-        return new SimpleFSDirectory(Paths.get(INDEX_PATH));
-    }
+
 
 
 }
